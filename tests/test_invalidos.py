@@ -17,3 +17,7 @@ def test_posicion_caracter_invalido():  #Checa que la posicion del caracter inva
 def test_menos_unario_invalido():
     with pytest.raises(ErrorDeSintaxis):
         interpretar("-3")
+
+def test_expresion_incompleta():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("3 +")
