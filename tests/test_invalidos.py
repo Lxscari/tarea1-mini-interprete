@@ -13,3 +13,7 @@ def test_posicion_caracter_invalido():  #Checa que la posicion del caracter inva
     with pytest.raises(ErrorDeSintaxis) as error:
         interpretar("3 # 4")
     assert error.value.posicion == 2
+
+def test_menos_unario_invalido():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("-3")
