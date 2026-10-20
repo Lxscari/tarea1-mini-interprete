@@ -3,10 +3,9 @@
 **Integrantes:**
 1.Arely Ramirez Espejel
 2. Gael Alonso Barajas Lascari
-3.  -
 
-**Fork:**
-**Rama:**
+**Fork: https://github.com/Lxscari/tarea1-mini-interprete**
+**Rama: tarea1-pruebitas-refactorizacion**
 
 > Contesten en este archivo. Respuestas breves y concretas: se califica que
 > hayan entendido, no la extensión.
