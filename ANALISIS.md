@@ -1,9 +1,9 @@
 # Análisis — Tarea 1
 
 **Integrantes:**
-1.
-2.
-3.
+1.Arely Ramirez Espejel
+2. Gael Alonso Barajas Lascari
+3.  -
 
 **Fork:**
 **Rama:**
@@ -19,10 +19,10 @@
 
 | Componente | Qué recibe | Qué entrega | De qué es responsable |
 |---|---|---|---|
-| `lexer` | | | |
-| `parser` | | | |
-| `ast` | | | |
-| `evaluator` | | | |
+| `lexer` | Una cadena de texto con una expresion | Una lista de Tokens | Reconoce los numeros, operadores y los simbolos validos |
+| `parser` | Una lista de tokens | Un AST  | Comprueba la estructura de la expresion dada en lexer y apartir de ella construye un AST respetando las reglas |
+| `ast` | Datos necesarios para representar una expresion  | Nodos que representan una expresion  | Define la estructura del arbol y la relacion entre los nodos |
+| `evaluator` | El AST | Un resultado numerico | Recorre el arbol y nos da el valor de la expresion |
 
 ### 1.2 ¿Qué recorrido sigue una expresión desde que se recibe como texto hasta que produce un resultado?
 
