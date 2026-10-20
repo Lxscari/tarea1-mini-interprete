@@ -51,7 +51,9 @@ Textuales, tal como los escribieron. No los limpien ni los reescriban.
 ```
 (mi amiga esta trabajando ahorita en test parser.py y ahi esta agregando sus test, entonces no afecta lo que yo hice? , entonces simplemente yo renombro lo mio y ahi meto yo mis test no? igual ella puede meter alguna ahi que vea que hace falta o que el programa de la profa no lo hace)
 ```
+```
 (AYUDA claude la cague, le di a git add * -f para no escribir los dos archivos que cambie, y di commit y se hizo commit de un buen de cosas ayudame a arreglarlo, no e hecho push gracias a dios)
+```
 ---
 
 ## 4. Cómo se incorporó o se descartó lo obtenido
