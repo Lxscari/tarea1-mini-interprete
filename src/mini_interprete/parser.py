@@ -27,7 +27,11 @@ class Parser:
 
     def parsear(self):
         """Construye el AST de la lista de tokens."""
-        return self._expresion()
+        arbol = self._expresion()
+        extra = self._actual()
+        if extra is not None:
+            raise ErrorDeSintaxis(f"Token no valido (inesperado),{extra.valor!r}", extra.posicion)
+        return arbol
 
     def _actual(self):
         """El token en la posicion actual, o None si ya no quedan."""
@@ -37,26 +41,34 @@ class Parser:
 
     def _avanzar(self):
         """Consume el token actual y lo regresa."""
-        token = self.tokens[self.pos]
+        token = self._actual()  #es mas facil utilizar la funcion _actual en ves de repetir codigo
+        if token is None: #esto namas salta si no quedan tokens 
+            posicion = self.tokens[-1].posicion + 1 if self.tokens else 0   #este if / else es el que nos maneja el caso de que sea vacia no hay token y la posicion es 0
+            raise ErrorDeSintaxis("La expresion termino antes de tiempo", posicion)
         self.pos += 1
         return token
 
     def _expresion(self):
-        izquierda = self._termino()
-        actual = self._actual()
-        if actual is not None and actual.tipo in OPERADORES_SUMA:
-            operador = self._avanzar()
-            derecha = self._expresion()
-            return OperacionBinaria(operador.valor, izquierda, derecha)
-        return izquierda
+        return self._operaciones_en_cadena(
+            siguiente_nivel=self._termino,
+            operadores=OPERADORES_SUMA,
+        )
 
     def _termino(self):
-        izquierda = self._factor()
-        actual = self._actual()
-        if actual is not None and actual.tipo in OPERADORES_PRODUCTO:
+        return self._operaciones_en_cadena(
+            siguiente_nivel=self._factor,
+            operadores=OPERADORES_PRODUCTO,
+        )
+
+    def _operaciones_en_cadena(self, siguiente_nivel, operadores):
+        izquierda = siguiente_nivel()
+        while True:
+            actual = self._actual()
+            if actual is None or actual.tipo not in operadores:
+                break
             operador = self._avanzar()
-            derecha = self._termino()
-            return OperacionBinaria(operador.valor, izquierda, derecha)
+            derecha = siguiente_nivel()
+            izquierda = OperacionBinaria(operador.valor, izquierda, derecha)
         return izquierda
 
     def _factor(self):

@@ -4,6 +4,7 @@
 """
 
 from .tokens import Token, TipoToken
+from mini_interprete.errores import ErrorDeSintaxis
 
 SIMBOLOS = {
     "+": TipoToken.MAS,
@@ -36,6 +37,6 @@ def tokenizar(texto: str) -> list:
             i += 1
 
         else:
-            i += 1
-
+            raise ErrorDeSintaxis(f"Se esperaba un caracter valido, {caracter!r}", i) #Investigue como hacer que saliera tal cual el error 
+        #el error va a aparecer como Se esperaba un carater valido "#" posicion 2 (para eso es la i )
     return tokens
