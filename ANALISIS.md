@@ -100,8 +100,8 @@
 | test_division_real (test_evaluator.py) | 10 / 4 | 2.5 | Normal | Comprueba que la división produce resultados reales |
 | test_multiples_espacios (test_evaluator.py) | 3  +  4 | 7 | Frontera | Comprueba que los espacios en las expresiones no afecten el resultado |
 | test_division_entre_cero (test_evaluator.py) | 10 / 0 | Lanzar ErrorDeEvaluacion | Inválida | La sintaxis si es valida, pero la operacion no se puede realizar  |
-| test_caracter_invalido (test_invalidos.py) | 3 # 4 | Lanzar ErrorDeSintaxis | Inválida | El caracter # no está permitido |
-| test_posicion_caracter_invalido (test_invalidos.py) | -3 | Lanzar ErrorDeSintaxis | Inválida | El signo menos unario no forma parte de la sintaxis |
+| test_posicion_caracter_invalido (test_invalidos.py) | 3 # 4 | Lanzar ErrorDeSintaxis | Inválida | El caracter # no está permitido |
+| test_menos_unario_invalido (test_invalidos.py) | -3 | Lanzar ErrorDeSintaxis | Inválida | El signo menos unario no forma parte de la sintaxis |
 | test_expresion_incompleta (test_invalidos.py) | 3 +  | Lanzar ErrorDeSintaxis | Inválida | Falta un operando después del operador |
 | test_entradavacia (test_invalidos.py) | "" | Lanzar ErrorDeSintaxis | Inválida | No hay expresión que analizar |
 | test_parentesis_sincerrar (test_invalidos.py) | (3 + 4 | Lanzar ErrorDeSintaxis | Inválida | Falta un parentesis de cierre|
