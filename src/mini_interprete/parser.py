@@ -37,7 +37,10 @@ class Parser:
 
     def _avanzar(self):
         """Consume el token actual y lo regresa."""
-        token = self.tokens[self.pos]
+        token = self._actual()  #es mas facil utilizar la funcion _actual en ves de repetir codigo
+        if token is None: #esto namas salta si no quedan tokens 
+            posicion = self.tokens[-1].posicion + 1 if self.tokens else 0   #este if / else es el que nos maneja el caso de que sea vacia no hay token y la posicion es 0
+            raise ErrorDeSintaxis("La expresion termino antes de tiempo", posicion)
         self.pos += 1
         return token
 
