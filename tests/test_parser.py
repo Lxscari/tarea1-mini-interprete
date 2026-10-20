@@ -25,3 +25,8 @@ def test_los_parentesis_cambian_la_agrupacion():
     assert arbol_de("(3 + 4) * 2") == OperacionBinaria(
         "*", OperacionBinaria("+", Numero(3), Numero(4)), Numero(2)
     )
+def test_la_resta_se_agrupa_de_izquierda_a_derecha():
+    # 10 - 3 - 2 debe agruparse como (10 - 3) - 2
+    assert arbol_de("10 - 3 - 2") == OperacionBinaria(
+        "-", OperacionBinaria("-", Numero(10), Numero(3)), Numero(2),
+    )
