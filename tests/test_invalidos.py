@@ -21,3 +21,7 @@ def test_menos_unario_invalido():
 def test_expresion_incompleta():
     with pytest.raises(ErrorDeSintaxis):
         interpretar("3 +")
+
+def test_entradavacia():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("")
