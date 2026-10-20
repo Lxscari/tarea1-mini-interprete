@@ -27,7 +27,11 @@ class Parser:
 
     def parsear(self):
         """Construye el AST de la lista de tokens."""
-        return self._expresion()
+        arbol = self._expresion()
+        extra = self._actual()
+        if extra is not None:
+            raise ErrorDeSintaxis(f"Token no valido (inesperado),{extra.valor!r}", extra.posicion)
+        return arbol
 
     def _actual(self):
         """El token en la posicion actual, o None si ya no quedan."""
