@@ -8,3 +8,8 @@ from mini_interprete.errores import ErrorDeSintaxis #Importamos el Error de sint
 def test_caracter_invalido():
     with pytest.raises(ErrorDeSintaxis):
         interpretar("3 # 4")
+
+def test_posicion_caracter_invalido():  #Checa que la posicion del caracter invalido efectivamente sea la 2 o la del operador
+    with pytest.raises(ErrorDeSintaxis) as error:
+        interpretar("3 # 4")
+    assert error.value.posicion == 2
