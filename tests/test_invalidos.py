@@ -25,3 +25,7 @@ def test_expresion_incompleta():
 def test_entradavacia():
     with pytest.raises(ErrorDeSintaxis):
         interpretar("")
+
+def test_parentesis_sincerrar():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("(3 + 4")
