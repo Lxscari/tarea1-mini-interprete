@@ -29,3 +29,11 @@ def test_entradavacia():
 def test_parentesis_sincerrar():
     with pytest.raises(ErrorDeSintaxis):
         interpretar("(3 + 4")
+
+def test_dos_numeros_sin_operador():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("3 4")
+
+def test_parentecis_extra():
+    with pytest.raises(ErrorDeSintaxis):
+        interpretar("(3 + 4))")
