@@ -42,24 +42,25 @@ class Parser:
         return token
 
     def _expresion(self):
-        izquierda = self._termino()
-        while True:
-            actual = self._actual()
-            if actual is None or actual.tipo not in OPERADORES_SUMA:
-                break
-            operador = self._avanzar()
-            derecha = self._termino()
-            izquierda = OperacionBinaria(operador.valor, izquierda, derecha)
-        return izquierda
+        return self._operaciones_en_cadena(
+            siguiente_nivel=self._termino,
+            operadores=OPERADORES_SUMA,
+        )
 
     def _termino(self):
-        izquierda = self._factor()
+        return self._operaciones_en_cadena(
+            siguiente_nivel=self._factor,
+            operadores=OPERADORES_PRODUCTO,
+        )
+
+    def _operaciones_en_cadena(self, siguiente_nivel, operadores):
+        izquierda = siguiente_nivel()
         while True:
             actual = self._actual()
-            if actual is None or actual.tipo not in OPERADORES_PRODUCTO:
+            if actual is None or actual.tipo not in operadores:
                 break
             operador = self._avanzar()
-            derecha = self._factor()
+            derecha = siguiente_nivel()
             izquierda = OperacionBinaria(operador.valor, izquierda, derecha)
         return izquierda
 
